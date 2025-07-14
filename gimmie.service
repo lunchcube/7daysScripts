@@ -1,0 +1,12 @@
+[Unit]
+Description=7DTD Gimmie Monitor
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/7days/gimmie_monitor.py
+WorkingDirectory=/home/7days
+Restart=always
+User=7days
+
+[Install]
+WantedBy=multi-user.target
