@@ -1,0 +1,20 @@
+[Unit]
+Description=7 Days to Die Dedicated Server
+After=network.target
+
+[Service]
+User=7days
+WorkingDirectory=/home/7days/7days
+ExecStart=/home/7days/7days/startserver.sh -configfile=/home/7days/7days/serverconfig.xml
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/7days/7days/server_service.log
+StandardError=append:/home/7days/7days/server_service.log
+
+# Notify Discord on failure or stop
+ExecStopPost=/bin/bash /home/7days/notify_discord.sh "STOPPED"
+ExecStartPost=/bin/bash /home/7days/notify_discord.sh "STARTED"
+ExecReload=/bin/bash /home/7days/notify_discord.sh "RELOADED"
+
+[Install]
+WantedBy=multi-user.target
