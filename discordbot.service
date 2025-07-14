@@ -1,0 +1,14 @@
+[Unit]
+Description=7DTD Discord Leaderboard Bot
+After=network.target
+
+[Service]
+User=7days
+WorkingDirectory=/home/7days
+ExecStart=/home/7days/run_discord_bot.sh
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
