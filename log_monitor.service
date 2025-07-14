@@ -1,0 +1,14 @@
+[Unit]
+Description=7 Days User Monitoring Service
+After=7daystodie.service
+Requires=7daystodie.service
+
+[Service]
+ExecStart=/home/7days/log_monitor.sh
+Restart=always
+RestartSec=5
+User=7days
+Group=7days
+
+[Install]
+WantedBy=multi-user.target
